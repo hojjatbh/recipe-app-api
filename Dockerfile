@@ -10,10 +10,11 @@ WORKDIR /app
 EXPOSE 8000
 
  
-RUN python -m pip install -r/tmp/requirements.txt &&\
+ARG DEV=false
+RUN python -m pip install -r /tmp/requirements.txt &&\
     rm -rf /tmp &&\
-    if [$DEV ="true"]; \
-        then python -m pip install -r/tmp/ requirements.dev.txt; \
+    if [ $DEV ="true" ]; \
+        then python -m pip install -r /tmp/ requirements.dev.txt; \
     fi &&\
     adduser \
         --disabled-password \
