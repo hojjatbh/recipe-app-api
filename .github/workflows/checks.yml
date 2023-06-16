@@ -2,7 +2,7 @@
 name: Checks
 
 
-# trigger by push
+# trigger by  push
 on: [push]
 
 jobs:
