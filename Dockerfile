@@ -10,7 +10,6 @@ WORKDIR /app
 EXPOSE 8000
 
  
-ARG DEV=false
 RUN python -m pip install -r/tmp/requirements.txt &&\
     rm -rf /tmp &&\
     if [$DEV ="true"]; \
