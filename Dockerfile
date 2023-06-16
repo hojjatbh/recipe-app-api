@@ -14,7 +14,7 @@ ARG DEV=false
 RUN python -m pip install -r/tmp/requirements.txt &&\
     rm -rf /tmp &&\
     if [$DEV ="true"]; \
-        then python -m pip install -r requirements.dev.txt; \
+        then python -m pip install -r/tmp/ requirements.dev.txt; \
     fi &&\
     adduser \
         --disabled-password \
