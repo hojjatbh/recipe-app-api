@@ -1,6 +1,8 @@
 ---
 name: Checks
 
+
+# trigger by push
 on: [push]
 
 jobs:
