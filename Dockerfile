@@ -11,11 +11,15 @@ EXPOSE 8000
 
  
 ARG DEV=false
-RUN python -m pip install -r /tmp/requirements.txt &&\
+RUN apk add --update --no-cache postgresql-client &&\
+    apk  add --update --no-cache --virtual .tmp-build-deps\
+        build-base postgresql-dev musl-dev &&\
+    python -m pip install -r /tmp/requirements.txt &&\
     rm -rf /tmp &&\
     if [ $DEV ="true" ]; \
         then python -m pip install -r /tmp/ requirements.dev.txt; \
     fi &&\
+    apk del .tmp-build-deps &&\
     adduser \
         --disabled-password \
         --no-create-home \
