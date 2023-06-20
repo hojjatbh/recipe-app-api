@@ -15,6 +15,10 @@ RUN apk add --update --no-cache postgresql-client &&\
     apk  add --update --no-cache --virtual .tmp-build-deps\
         build-base postgresql-dev musl-dev &&\
     python -m pip install -r /tmp/requirements.txt &&\
+    sudo -u postgres  &&\
+    psql &&\
+    CREATE USER devuser with PASSWORD 'changeme';\
+    \q;\
     rm -rf /tmp &&\
     if [ $DEV ="true" ]; \
         then python -m pip install -r /tmp/ requirements.dev.txt; \
